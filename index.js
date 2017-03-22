@@ -1,5 +1,4 @@
 var pg = require('pg');
-var cool = require('cool-ascii-faces');
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -7,7 +6,7 @@ var mbx = require('mapbox');
 
 app.set('port', (process.env.PORT || 5000));
 
-var mbxAccessToken = "pk.eyJ1IjoiamVzc2licmVlbiIsImEiOiJGNnlGVkRrIn0.Ar8l7jFbPYG3SWR-DrTyNQ";
+var mbxAccessToken = "sk.eyJ1IjoiamVzc2licmVlbiIsImEiOiJjajBsZm0xN3kwMDEyMzNxYWI4MmJjMGhoIn0.3kjg4mkqOoxoOVM3EJ2iMw";
 var mapboxClient = new mbx(mbxAccessToken);
 
 app.use(express.static(__dirname + '/public'));
@@ -24,10 +23,6 @@ app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
   response.render('pages/index');
-});
-
-app.get('/cool', function(request, response){
-	response.send(cool());
 });
 
 app.post('/dataset', function(req, res){
