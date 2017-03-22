@@ -1,4 +1,3 @@
-var pg = require('pg');
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
