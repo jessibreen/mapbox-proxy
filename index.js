@@ -7,7 +7,7 @@ var mbx = require('mapbox');
 
 app.set('port', (process.env.PORT || 5000));
 
-var mbxAccessToken = "{your secret token with datasets scopes here}";
+var mbxAccessToken = "pk.eyJ1IjoiamVzc2licmVlbiIsImEiOiJGNnlGVkRrIn0.Ar8l7jFbPYG3SWR-DrTyNQ";
 var mapboxClient = new mbx(mbxAccessToken);
 
 app.use(express.static(__dirname + '/public'));
