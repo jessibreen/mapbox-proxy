@@ -3,7 +3,8 @@ var app = express();
 var bodyParser = require('body-parser');
 var mbx = require('mapbox');
 
-app.set('port', (process.env.PORT || 5000));
+app.set('port', (80));
+//app.set('port', (process.env.PORT || 80));
 
 var mbxAccessToken = "sk.eyJ1IjoiamVzc2licmVlbiIsImEiOiJjajBsZm0xN3kwMDEyMzNxYWI4MmJjMGhoIn0.3kjg4mkqOoxoOVM3EJ2iMw";
 var mapboxClient = new mbx(mbxAccessToken);
@@ -20,11 +21,11 @@ app.use(bodyParser.json());
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-app.get('/api', function(request, response) {
+app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-app.post('/api/dataset', function(req, res){
+app.post('/dataset', function(req, res){
 	console.log(req.body.feature);
 	var feature = req.body.feature;
 	var datasetId = req.body.datasetId;
@@ -36,7 +37,7 @@ app.post('/api/dataset', function(req, res){
 	});
 });
 
-app.get('/api/dataset', function(req, res) {
+app.get('/dataset', function(req, res) {
 	mapboxClient.listFeatures(req.query.datasetId, {}, function(err, collection) {
 	  console.log(collection);
 	  res.send(collection);
