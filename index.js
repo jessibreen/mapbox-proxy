@@ -20,11 +20,11 @@ app.use(bodyParser.json());
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-app.get('/', function(request, response) {
+app.get('/api', function(request, response) {
   response.render('pages/index');
 });
 
-app.post('/dataset', function(req, res){
+app.post('/api/dataset', function(req, res){
 	console.log(req.body.feature);
 	var feature = req.body.feature;
 	var datasetId = req.body.datasetId;
@@ -36,7 +36,7 @@ app.post('/dataset', function(req, res){
 	});
 });
 
-app.get('/dataset', function(req, res) {
+app.get('/api/dataset', function(req, res) {
 	mapboxClient.listFeatures(req.query.datasetId, {}, function(err, collection) {
 	  console.log(collection);
 	  res.send(collection);
